@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import userActions from '../actions/users';
-import { LOGIN_ACTION } from '../action-constants';
+import Actions from '../actions';
+
+const { login: userActions } = Actions;
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = null;
+    this.login = this.login.bind(this);
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log('nextProps', nextProps);
   }
 
+  login() {
+    this.props.login('a', 'b');
+  }
+
   render() {
-    console.log(this.props.authReducer);
     return (
       <div>
-        <button onClick={this.props.login}>Test</button><br />
+        { this.props.inProgress && <span>Loading...</span> }
+        <button onClick={this.login}>Test</button><br />
         <Link to="/">Home</Link><br />
         <Link to="/register">Register</Link><br />
         <Link to="/profile">Profile</Link><br />
@@ -24,11 +35,11 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...state,
+  inProgress: state.authReducer.inProgress,
 });
 
 const mapDispatchToProps = dispatch => ({
-  login: ev => dispatch({ type: LOGIN_ACTION, payload: userActions.login(ev) }),
+  login: (email, password) => dispatch(userActions(email, password)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

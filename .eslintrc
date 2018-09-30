@@ -18,6 +18,7 @@
       "components": [ "Link" ],
       "specialLink": [ "to" ]
     }],
+    "arrow-body-style": ["warn", "as-needed"],
     "react/prop-types": [0],
     "comma-spacing": ["error", {
       "before": false,
