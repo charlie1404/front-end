@@ -1,24 +1,24 @@
 import ActionConstants from '../action-constants';
-import { LOGIN_FAILED } from '../action-constants/users';
 
 const {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
+  SEND_MAIL_REQUEST,
+  SEND_MAIL_SUCCESS,
+  SEND_MAIL_FAILED,
 } = ActionConstants;
 
-export default function authReducer(state = {}, action) {
+export default function mailReducer(state = {}, action) {
   switch (action.type) {
-    case LOGIN_SUCCESS:
+    case SEND_MAIL_SUCCESS:
       return {
         inProgress: false,
-        isloginSuccess: true,
+        isSendMailSuccess: true,
       };
-    case LOGIN_FAILED:
+    case SEND_MAIL_FAILED:
       return {
         inProgress: false,
-        isloginSuccess: false,
+        isSendMailFailed: true,
       };
-    case LOGIN_REQUEST:
+    case SEND_MAIL_REQUEST:
       return {
         inProgress: true,
       };

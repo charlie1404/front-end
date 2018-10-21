@@ -21,12 +21,12 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state,
-});
+function mapStateToProps(state) {
+  return {};
+}
 
-const mapDispatchToProps = dispatch => ({
-  // signin: () => dispatch(signin())
-});
+function mapDispatchToProps(dispatch) {
+  return {};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
