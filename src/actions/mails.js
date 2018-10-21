@@ -19,7 +19,7 @@ const config = {
 export function loadMails() {
   return (dispatch) => {
     dispatch({ type: LOAD_MAILS_REQUEST });
-    return apiHandler('mails/listall', 'get', null, config)
+    return apiHandler('mails', 'get', null, config)
       .then((data) => {
         dispatch({ type: LOAD_MAILS_SUCCESS, payload: data });
         return data;

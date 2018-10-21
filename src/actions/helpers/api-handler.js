@@ -8,6 +8,9 @@ const internalHandler = axios.create({
 });
 
 function apiHandler(url, method = 'get', body = {}, config = {}) {
+  if (method === 'get') {
+    return internalHandler[method](url, config);
+  }
   return internalHandler[method](url, qs.stringify(body), config);
 }
 
